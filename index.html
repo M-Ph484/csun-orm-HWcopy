@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="https://glitch.com/favicon.ico" />
 
-    <title>Hello CSUN!</title>
+    <title>Hello CSUN COMP 584: Spring 2026!</title>
 
     
     <!-- import the webpage's stylesheet -->
@@ -17,13 +17,213 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <!-- this is the start of content -->
+    <!-- BODY: Content starts here. Elements and attributes were modified
+     to demonstrate what can be done with basic HTML, and a few modifications
+     in CSS and JS (just for interaction and clear design)
+    -->
+    <header class="site-header">
+       <p class="tagline">
+        Practice with HTML elements, forms, and attributes.
+      </p>
+    </header>
     <h1>
-      Hello 👋 Comp Sci !!!!
+      Assignment 1: Intro HTML
     </h1>
-    <p>
-      This starter project gives you everything you need to start working on a new
-      website, and nothing more.
-    </p>
+    <main>
+        <!-- SECTION: structure of the site 
+        - Each one groups related content into a standalone “chapter” of the page.
+        - Semantic structure helps accessibility and SEO.
+        - Screen readers can jump between sections.
+
+        Common attributes you may see:
+        - aria-labelledby="id-of-heading": shows a clear label 
+        -->
+                <section aria-labelledby="semantics-title" class="card">
+          <h2 id="semantics-title">Semantic Sections</h2>
+
+          <p>
+            This page uses <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>,
+            and <code>&lt;footer&gt;</code> to demonstrate the layout.
+          </p>
+
+          <p class="hint">
+            This paragraph can be modified (it uses <code>contenteditable</code>).
+          </p>
+
+          <p
+            class="editable"
+            contenteditable="true"
+            spellcheck="true"
+            aria-label="Editable paragraph"
+          >
+            Click here and edit text. (This is not saved anywhere yet.)
+          </p>
+        </section>
+
+
+          <!-- SECTION: code element -->
+        <section aria-labelledby="code-title" class="card">
+          <h2 id="code-title">Code Snippet</h2>
+
+          <p>
+            Use <code>&lt;code&gt;</code> for inline code, and wrap it in
+            <code>&lt;pre&gt;</code> when making a block snippet.
+          </p>
+
+          <pre class="code-block">
+<code>// Example JS (display-only)
+const greet = (name) =&gt; `Hello ${name}!`;</code>
+          </pre>
+        </section>
+
+        <!-- SECTION: image + buttons -->
+        <section aria-labelledby="image-title" class="card">
+          <h2 id="image-title">Image + Buttons</h2>
+
+          <figure>
+            <img
+              id="demoImage"
+              class="demo-img"
+              src="https://placehold.co/900x400/png"
+              width="900"
+              height="400"
+              alt="Placeholder banner image used to practice the img element"
+            />
+            <figcaption class="hint">
+              Image design/style is usually controlled with CSS (e.g., border-radius).
+            </figcaption>
+          </figure>
+
+          <div class="button-row">
+            <button type="button" id="swapImageBtn">Swap image</button>
+            <button type="button" class="secondary" id="toggleRoundBtn">
+              Toggle “round” shape
+            </button>
+          </div>
+        </section>
+
+        <!-- SECTION: form + inputs + select + option + selectedcontent -->
+        <section aria-labelledby="forms-title" class="card">
+          <h2 id="forms-title">Forms (Email Placeholders)</h2>
+
+          <form id="emailForm" action="#" method="post">
+            <div class="field">
+              <label for="toEmail">To (email)</label>
+              <input
+                id="toEmail"
+                name="toEmail"
+                type="email"
+                placeholder="name@example.com"
+                autocomplete="email"
+              />
+              <p class="hint">Placeholder is a hint, not a label.</p>
+            </div>
+
+            <div class="field">
+              <label for="subject">Subject</label>
+              <input
+                id="subject"
+                name="subject"
+                type="text"
+                placeholder="Welcome to our newsletter..."
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="field">
+              <label for="template">Template (standard select)</label>
+              <select id="template" name="template">
+                <option value="welcome" selected>Welcome email</option>
+                <option value="weekly">Weekly update</option>
+                <option value="promo">Promotion</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="frequency">
+                Frequency (experimental customizable select demo)
+              </label>
+
+              <!-- Experimental: some browsers may ignore/move the button/selectedcontent -->
+              <select id="frequency" name="frequency" aria-describedby="freqHint">
+                <button type="button">
+                  <selectedcontent></selectedcontent>
+                </button>
+
+                <option value="draft" selected>Do not send yet (draft)</option>
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+              </select>
+
+              <p class="hint" id="freqHint">
+                The <code>&lt;selectedcontent&gt;</code> element is experimental.
+              </p>
+            </div>
+
+            <div class="field">
+              <label for="message">Message (short input placeholder)</label>
+              <input
+                id="message"
+                name="message"
+                type="text"
+                placeholder="Write a short message..."
+              />
+            </div>
+
+            <div class="button-row">
+              <button type="submit" id="saveDraftBtn">Save draft</button>
+
+              <!-- formaction overrides the form's action for THIS submit button only -->
+              <button type="submit" class="secondary" formaction="email-preview.html">
+                Preview (placeholder)
+              </button>
+
+              <button type="reset" class="ghost">Reset</button>
+            </div>
+
+            <p class="status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+      </main>
+
+      <!-- ASIDE: indirectly related content 
+          Purpose:
+          - Contains content related to the page, but not part of the main flow.
+          - Typical use: sidebars, callouts, related links, “future work” notes.
+          -No main content is put here
+          -->
+      <aside class="sidebar" aria-labelledby="aside-title">
+        <h2 id="aside-title">Aside: Future Email Features</h2>
+
+        <p class="hint">
+          Area designated for 
+          <code>&lt;aside&gt;</code> content.
+        </p>
+
+        <ul>
+          <li>Connect to an email API (SendGrid/Mailchimp/etc.)</li>
+          <li>Save drafts to a backend database</li>
+          <li>Template builder + preview renderer</li>
+        </ul>
+
+        <section aria-labelledby="notes-title" class="notes">
+          <h3 id="notes-title">Scratch Notes (contenteditable)</h3>
+          <p class="editable" contenteditable="true" spellcheck="true">
+            Type notes here. Text input could be stored in a DB at a later time, depending on the app.
+          </p>
+        </section>
+      </aside>
+    </div>
+
+     <!-- FOOTER: metadata and related links
+        Purpose:
+        - Footer information for the nearest sectioning element or the whole page.
+        - Can include copyright, author info, contact, or “back to top” links.
+        This one only has a simple copyright and back to top addition
+     -->
+    <footer class="site-footer">
+      <p>© 2026  CSUN Comp 584: Adv Web Engineering</p>
+      <p><a href="#top">Back to top</a></p>
+    </footer>
   </body>
 </html>
